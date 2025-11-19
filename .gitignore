@@ -1,0 +1,20 @@
+# Godot & Mono build / cache
+/.godot/
+mono_crash.*.json
+
+# C# build outputs
+/bin/
+/obj/
+
+# User-specific config
+*.user
+*.csproj.user
+
+# Local settings / secrets
+*.cfg
+*.log
+*.tmp
+
+# OS clutter
+Thumbs.db
+.DS_Store

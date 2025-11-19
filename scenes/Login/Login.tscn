@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtwj3rw3hgnn"]
+
+[ext_resource type="Script" uid="uid://bqet1gkhna3ck" path="res://scenes/Login/LoginUI.cs" id="1_0ddjp"]
+
+[sub_resource type="SystemFont" id="SystemFont_0rlvn"]
+font_italic = true
+subpixel_positioning = 0
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ddjp")
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = -223.0
+offset_right = 110.0
+offset_bottom = -191.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_0rlvn")
+theme_override_font_sizes/font_size = 23
+text = "Faydark Admin Tool"
+horizontal_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.5
+offset_top = -195.0
+offset_right = 101.5
+offset_bottom = -172.0
+grow_horizontal = 2
+text = "Connected / Disconnected"
+horizontal_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -169.0
+offset_right = 77.0
+offset_bottom = -146.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "V:  A1.0.0"
+horizontal_alignment = 1
+
+[node name="Container" type="ColorRect" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(50, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -187.0
+offset_top = -226.0
+offset_right = 191.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.52156866, 0.54509807, 0.5529412, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -105.0
+offset_right = 77.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="UsernameField" type="LineEdit" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="PasswordField" type="LineEdit" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+placeholder_text = "Password"
+secret = true
+secret_character = "*"
+
+[node name="SaveUsernameCheckBox" type="CheckBox" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Remember"
+
+[node name="LoginButton" type="Button" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+text = "Login"
+
+[node name="CloseButton" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 162.0
+offset_right = 25.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
