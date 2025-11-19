@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://lserfssl8kv7"]
+[gd_scene load_steps=7 format=3 uid="uid://lserfssl8kv7"]
 
-[ext_resource type="Script" uid="uid://c8noabp88qjde" path="res://scenes/WorldTerrainEditor/CreateWorldWindow.cs" id="1_3dblc"]
+[ext_resource type="Script" uid="uid://c8noabp88qjde" path="res://scenes/WorldEditor/CreateWorldWindow.cs" id="1_3dblc"]
+[ext_resource type="Script" uid="uid://bc2ctj66q3qgh" path="res://scenes/WorldEditor/WorldEditor.cs" id="1_8puct"]
+[ext_resource type="PackedScene" uid="uid://c7jsmwmuisc53" path="res://scenes/WorldEditor/EditorHexTile.tscn" id="2_gpve4"]
+[ext_resource type="Script" uid="uid://bmttweqt23yhp" path="res://scenes/WorldEditor/CameraRig.cs" id="4_dxb0k"]
 
 [sub_resource type="Theme" id="Theme_3dblc"]
 
 [sub_resource type="Theme" id="Theme_8puct"]
 
-[node name="WorldTerrainEditor" type="Node2D"]
+[node name="WorldEditor" type="Node2D"]
+script = ExtResource("1_8puct")
+HexTileScene = ExtResource("2_gpve4")
+
+[node name="TileRoot" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -18,6 +25,7 @@ offset_bottom = 40.0
 
 [node name="CreateWorldWindow" type="Window" parent="CanvasLayer/Control"]
 oversampling_override = 1.0
+title = "Create New World"
 initial_position = 2
 size = Vector2i(525, 587)
 wrap_controls = true
@@ -33,11 +41,11 @@ offset_bottom = 392.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-text = "Create New World"
+text = "Terrain Editor"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
@@ -365,4 +373,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Back"
 
-[node name="TileRoot" type="Node2D" parent="."]
+[node name="ToolsPanel" type="HBoxContainer" parent="CanvasLayer"]
+z_index = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -86.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="TerrainButton" type="Button" parent="CanvasLayer/ToolsPanel"]
+layout_mode = 2
+text = "T"
+
+[node name="BiomeButton" type="Button" parent="CanvasLayer/ToolsPanel"]
+layout_mode = 2
+text = "B"
+
+[node name="POIButton" type="Button" parent="CanvasLayer/ToolsPanel"]
+layout_mode = 2
+text = "P"
+
+[node name="RoadsButton" type="Button" parent="CanvasLayer/ToolsPanel"]
+layout_mode = 2
+text = "R"
+
+[node name="CameraRig" type="Node2D" parent="."]
+script = ExtResource("4_dxb0k")
+
+[node name="Camera2D" type="Camera2D" parent="CameraRig"]

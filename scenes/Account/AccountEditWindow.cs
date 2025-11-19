@@ -28,7 +28,7 @@ public partial class AccountEditWindow : Window
 
 	public override void _Ready()
 	{
-		_titleLabel          = GetNode<Label>("MarginContainer/VBoxContainer/EditAccountLabel");
+		_titleLabel          = GetNode<Label>("MarginContainer/VBoxContainer/AccountNameLabel");
 		_usernameEdit        = GetNode<LineEdit>("MarginContainer/VBoxContainer/FormGrid/UsernameEdit");
 		_authorityOption     = GetNode<OptionButton>("MarginContainer/VBoxContainer/FormGrid/AuthorityOption");
 		_passwordEdit        = GetNode<LineEdit>("MarginContainer/VBoxContainer/FormGrid/PasswordEdit");

@@ -20,42 +20,14 @@ FAT gives us the power to build:
 
 🧱 Tiles & procedural maps
 
-🧙‍♂️ Classes, races, NPCs (future)
+🧙‍♂️ Classes, races, NPCs 
 
 🏰 Towns & structures
 
 📦 Items & loot
 
-⚙️ Server-side systems (future)
+⚙️ Server-side systems
 
-Currently, we are focused on account management and world creation foundations.
-
-# 🚀 Project Goals
-Phase 1 (Current)
-
-✔️ MySQL connectivity (Hostinger external DB)
-
-✔️ Admin login system
-
-✔️ Account tools (Create, Edit, Delete, View)
-
-⏳ World tools (Create, Load, Edit, Delete)
-
-⏳ Biome tools
-
-⏳ World generation restoration (hex procedural system)
-
-Phase 2
-
-▢ NPC editor
-
-▢ Item editor
-
-▢ Ability/class editor
-
-▢ Runtime client/server integration
-
-▢ FAT → Server export pipeline
 
 # 🛠️ Tech Stack
 
@@ -71,29 +43,6 @@ UI: Godot Control system
 
 FAT is fully C#, except for trivial GDScript UI helpers (rare).
 
-# 🧱 Future Work
-
-World Tools:
-
-Procedural hex world generation
-
-Saving/loading worlds
-
-Editing worlds
-
-World metadata
-
-Biome Tools:
-
-Biome definitions
-
-Tile sets
-
-Generation parameters
-
-Item/NPC Tools:
-
-Large editor systems for later phases
 
 # 🤝 Contributing
 

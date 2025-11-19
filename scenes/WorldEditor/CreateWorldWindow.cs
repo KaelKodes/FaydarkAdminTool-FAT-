@@ -5,7 +5,7 @@ using System;
  *  CreateWorldWindow
  *  ------------------
  *  This window gathers all world-generation parameters from the admin.
- *  When "Generate" is pressed, all values are passed to WorldTerrainEditor.
+ *  When "Generate" is pressed, all values are passed to WorldEditor.
  */
 
 public partial class CreateWorldWindow : Window
@@ -48,11 +48,12 @@ public partial class CreateWorldWindow : Window
 	private Label _waterDisplay;
 	private Label _landDisplay;
 	private Label _mountainDisplay;
+	private WorldEditor _editor;
 
-
-
-	public override void _Ready()
+public override void _Ready()
 	{
+		GD.Print(">>> CREATE WORLD WINDOW READY <<<");
+
 		// WORLD BEHAVIOR
 		_widthBox      = GetNode<SpinBox>("VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid/WidthBox");
 		_heightBox     = GetNode<SpinBox>("VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid/HeightBox");
@@ -102,16 +103,17 @@ public partial class CreateWorldWindow : Window
 		_mountainPercentBox.ValueChanged += OnRatioValuesChanged;
 		_resetButton.Pressed += ( ) => UpdateRatioDisplay();
 
-
-
-
-
 		SetDefaults();
 		UpdateRatioDisplay();
 
 	}
 	
-	
+
+public void SetEditor(WorldEditor editor)
+{
+	_editor = editor;
+}
+
 
 
 	private void SetDefaults()
@@ -183,6 +185,22 @@ private void OnRatioValuesChanged(double _value)
 	CallDeferred(nameof(GoBackToAdminMenu));
 }
 
+private WorldEditor GetEditor()
+{
+	Node node = this;
+
+	while (node != null)
+	{
+		if (node is WorldEditor editor)
+			return editor;
+
+		node = node.GetParent();
+	}
+
+	return null;
+}
+
+
 private void GoBackToAdminMenu()
 {
 	GetTree().ChangeSceneToFile("res://Scenes/AdminMenu/AdminMenu.tscn");
@@ -192,12 +210,106 @@ private void GoBackToAdminMenu()
 
 	private void OnGeneratePressed()
 {
-	int sizeVariance  = (int)_sizeVarianceBox.Value;
-	int irregularity  = _irregularityBox.Selected;
+	DebugParentChain();
 
+	// Validate first
 	if (!ValidateInputs())
 		return;
+
+	// World behavior
+	int width      = (int)_widthBox.Value;
+	int height     = (int)_heightBox.Value;
+	long seed      = long.Parse(_seedBox.Text);
+	bool useBounds = _boundariesCheck.ButtonPressed;
+
+	// Continents
+	int continents   = (int)_continentsBox.Value;
+	int minDist      = (int)_minDistanceBox.Value;
+	int maxDist      = (int)_maxDistanceBox.Value;
+	int sizeVariance = (int)_sizeVarianceBox.Value;
+	int irregularity = _irregularityBox.Selected;   // 0–5
+
+	// Water
+	int waterPercent   = (int)_waterPercentBox.Value;
+	int waterBodies    = (int)_waterBodiesBox.Value;
+	int waterChance    = (int)_waterRiverChanceBox.Value;
+	int maxRiversBody  = (int)_maxRiversPerBodyBox.Value;
+
+	// Mountains
+	int mountainPercent = (int)_mountainPercentBox.Value;
+	int tallMountains   = (int)_tallMountainsBox.Value;
+	int mountainChance  = (int)_mountainRiverChanceBox.Value;
+	int maxRiversTM     = (int)_maxRiversTMBox.Value;
+
+	// Get the editor (root of the scene)
+	if (_editor == null)
+{
+	GD.PushError("CreateWorldWindow: Editor reference not set!");
+	return;
 }
+
+_editor.GenerateWorld(
+	width,
+	height,
+	seed,
+	useBounds,
+	continents,
+	minDist,
+	maxDist,
+	sizeVariance,
+	irregularity,
+	waterPercent,
+	waterBodies,
+	waterChance,
+	maxRiversBody,
+	mountainPercent,
+	tallMountains,
+	mountainChance,
+	maxRiversTM
+);
+
+
+
+
+	_editor.GenerateWorld(
+		width,
+		height,
+		seed,
+		useBounds,
+		continents,
+		minDist,
+		maxDist,
+		sizeVariance,
+		irregularity,
+		waterPercent,
+		waterBodies,
+		waterChance,
+		maxRiversBody,
+		mountainPercent,
+		tallMountains,
+		mountainChance,
+		maxRiversTM
+	);
+
+	Hide();
+}
+private void DebugParentChain()
+{
+	GD.Print("---- DEBUG PARENT CHAIN ----");
+
+	Node n = this;
+	int depth = 0;
+
+	while (n != null)
+	{
+		GD.Print($"{depth}: {n.Name} ({n.GetType()})");
+		n = n.GetParent();
+		depth++;
+	}
+
+	GD.Print("----------------------------");
+}
+
 	
 	private bool ValidateInputs()
 {

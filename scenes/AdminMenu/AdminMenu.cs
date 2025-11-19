@@ -151,7 +151,7 @@ public partial class AdminMenu : Control
 			case 0: // Create
 				GD.Print("World Tools: Create selected");
 				// For now, jump straight into terrain editor scene.
-				GetTree().ChangeSceneToFile("res://scenes/WorldTerrainEditor/WorldTerrainEditor.tscn");
+				GetTree().ChangeSceneToFile("res://scenes/WorldEditor/WorldEditor.tscn");
 				break;
 
 			case 1: // View
