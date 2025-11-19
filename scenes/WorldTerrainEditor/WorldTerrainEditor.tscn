@@ -1,0 +1,368 @@
+[gd_scene load_steps=4 format=3 uid="uid://lserfssl8kv7"]
+
+[ext_resource type="Script" uid="uid://c8noabp88qjde" path="res://scenes/WorldTerrainEditor/CreateWorldWindow.cs" id="1_3dblc"]
+
+[sub_resource type="Theme" id="Theme_3dblc"]
+
+[sub_resource type="Theme" id="Theme_8puct"]
+
+[node name="WorldTerrainEditor" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreateWorldWindow" type="Window" parent="CanvasLayer/Control"]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(525, 587)
+wrap_controls = true
+script = ExtResource("1_3dblc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CreateWorldWindow"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -231.5
+offset_right = 231.5
+offset_bottom = 392.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Create New World"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 9
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "🔱 World Behavior"
+horizontal_alignment = 1
+
+[node name="WorldGrid" type="GridContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme = SubResource("Theme_3dblc")
+text = "Width: "
+
+[node name="HeightBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Height: "
+
+[node name="WidthBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+tooltip_text = "Unchecked allows World gen to continue when reaching node edges"
+mouse_filter = 0
+text = "Use Boundaries"
+
+[node name="BoundariesCheck" type="CheckBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Seed: "
+
+[node name="SeedBox" type="LineEdit" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+layout_mode = 2
+tooltip_text = "Enabled keeps the Seed when Resetting. Disabled Generates a new one."
+mouse_filter = 0
+text = "Keep Seed"
+
+[node name="KeepSeedCheck" type="CheckBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WorldGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "🌊 Water Parameters"
+horizontal_alignment = 1
+
+[node name="WaterGrid" type="GridContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+tooltip_text = "How much of the world is covered in water."
+mouse_filter = 0
+text = "Water %: "
+
+[node name="WaterPercentBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+tooltip_text = "Bodies of Water ARE NOT OCEANS. These are additional bodies generated ON LAND."
+mouse_filter = 0
+theme = SubResource("Theme_8puct")
+text = "Bodies: "
+
+[node name="WaterBodiesBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "River Chance %: "
+
+[node name="WaterRiverChanceBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Max River/Body: "
+
+[node name="MaxRiverPerBodyBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer/WaterGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "🌍 Continents"
+horizontal_alignment = 1
+
+[node name="ContinentGrid" type="GridContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
+
+[node name="Label7" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Continents: "
+
+[node name="ContinentBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min Distance: "
+
+[node name="MinDistanceBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label9" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max Distance: "
+
+[node name="MaxDistanceBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+text = "Size Variance: "
+
+[node name="SizeVarianceBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+value = 30.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+text = "Irregularity:"
+
+[node name="IrregularityBox" type="OptionButton" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/ContinentGrid"]
+layout_mode = 2
+size_flags_horizontal = 4
+selected = 3
+item_count = 6
+popup/item_0/text = "0 - None"
+popup/item_0/id = 0
+popup/item_1/text = "1 - Slight"
+popup/item_1/id = 1
+popup/item_2/text = "2 - Moderate"
+popup/item_2/id = 2
+popup/item_3/text = "3 - Noticeable"
+popup/item_3/id = 3
+popup/item_4/text = "4 - High"
+popup/item_4/id = 4
+popup/item_5/text = "5 - Extreme"
+popup/item_5/id = 5
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "⛰️ Mountain Parameters"
+horizontal_alignment = 1
+
+[node name="MountainGrid" type="GridContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Label6" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Mountain %: "
+
+[node name="MountainPercentBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+tooltip_text = "Tall Mountains are Unpassable Terrain, unless a Biome uses it."
+mouse_filter = 0
+text = "Tall Mountains: "
+
+[node name="TallMountainsBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "River Chance %: "
+
+[node name="MountainRiverChanceBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label9" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Max River/TM: "
+
+[node name="MaxRiversTMBox" type="SpinBox" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/HBoxContainer/VBoxContainer2/MountainGrid"]
+layout_mode = 2
+alignment = 1
+
+[node name="WarningLabel" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
+layout_mode = 2
+text = "Warnings"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="GridContainer" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Water" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Water: "
+horizontal_alignment = 1
+
+[node name="WaterDisplay" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Land" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Land: "
+horizontal_alignment = 1
+
+[node name="LandDisplay" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Mountain" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mountain:"
+horizontal_alignment = 1
+
+[node name="MountainDisplay" type="Label" parent="CanvasLayer/Control/CreateWorldWindow/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonRow" type="HBoxContainer" parent="CanvasLayer/Control/CreateWorldWindow"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -40.0
+offset_right = 124.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="GenerateButton" type="Button" parent="CanvasLayer/Control/CreateWorldWindow/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Generate"
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/Control/CreateWorldWindow/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Reset"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Control/CreateWorldWindow/ButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[node name="TileRoot" type="Node2D" parent="."]

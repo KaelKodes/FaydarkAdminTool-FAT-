@@ -20,7 +20,7 @@ public partial class LoginUI : Control
 		_statusLabel = GetNode<Label>("StatusLabel");
 		_loginButton = GetNode<Button>("VBoxContainer/LoginButton");
 
-		 // 🔽 NEW: load saved username settings
+	
 	var err = _config.Load(ConfigPath);
 	if (err == Error.Ok)
 	{
@@ -37,7 +37,7 @@ public partial class LoginUI : Control
 				(string)_config.GetValue("login", "saved_username");
 		}
 		}
-
+		_passwordField.TextSubmitted += OnPasswordEnter;
 		_loginButton.Pressed += OnLoginPressed;
 
 		// Connect Exit Button
@@ -68,6 +68,12 @@ if (!pingOk)
 
 _statusLabel.Text = "✅ DB Online";
 }
+
+private void OnPasswordEnter(string newText)
+{
+	OnLoginPressed();
+}
+
 
 	private void OnLoginPressed()
 	{

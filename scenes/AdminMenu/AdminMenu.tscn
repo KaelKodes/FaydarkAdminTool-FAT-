@@ -69,7 +69,7 @@ text = "Close"
 [node name="Window" type="Window" parent="."]
 oversampling_override = 1.0
 initial_position = 1
-size = Vector2i(222, 346)
+size = Vector2i(222, 354)
 wrap_controls = true
 theme_override_constants/title_outline_size = 2
 
@@ -103,37 +103,11 @@ horizontal_alignment = 1
 [node name="HSeparator4" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Window/MarginContainer/VBoxContainer"]
+[node name="WorldToolsButton" type="Button" parent="Window/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "World Tools"
-horizontal_alignment = 1
 autowrap_trim_flags = 0
-justification_flags = 160
-
-[node name="WorldTools" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/WorldTools"]
-layout_mode = 2
-
-[node name="WorldCreateButton" type="Button" parent="Window/MarginContainer/VBoxContainer/WorldTools/HBoxContainer"]
-layout_mode = 2
-text = "Create"
-
-[node name="WorldCopyButton" type="Button" parent="Window/MarginContainer/VBoxContainer/WorldTools/HBoxContainer"]
-layout_mode = 2
-text = "Copy"
-
-[node name="WorldModifyButton" type="Button" parent="Window/MarginContainer/VBoxContainer/WorldTools/HBoxContainer"]
-layout_mode = 2
-text = "Edit"
-
-[node name="WorldDeleteButton" type="Button" parent="Window/MarginContainer/VBoxContainer/WorldTools/HBoxContainer"]
-layout_mode = 2
-text = "Delete"
 
 [node name="HSeparator5" type="HSeparator" parent="Window/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -200,13 +174,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit FAT"
 
-[node name="AccountToolsPopup" type="PopupMenu" parent="Window"]
+[node name="ToolsPopup" type="PopupMenu" parent="Window"]
 oversampling_override = 1.0
 initial_position = 4
 size = Vector2i(120, 100)
 always_on_top = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Window/AccountToolsPopup"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/ToolsPopup"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
